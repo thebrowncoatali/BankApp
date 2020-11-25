@@ -1,4 +1,4 @@
-
+from data import ACCOUNTS
 
 class Bank():
 	"""
