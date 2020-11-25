@@ -2,6 +2,7 @@ from models.bank import Bank
 
 
 class Program():
+	current_account = None
 
 	def __init__(self):
 		self.bank = Bank('Bank of Canada')
@@ -11,6 +12,17 @@ class Program():
 			Function initializer
 		"""
 		self.show_main_menu()
+
+	def _get_current_account(self):
+		"""
+			this function ask for account number 
+			and search match in accounts data.
+
+			return account match
+		"""
+		account_to_search = input('Enter the account number: ')
+		account_match = self.bank.search_account(account_to_search)
+		return account_match
 
 	def show_main_menu(self):
 		"""
@@ -103,7 +115,14 @@ class Program():
 
 		if choice == 2:
 			# seach by account number
-			pass
+			while not self.current_account:
+				self.current_account = self._get_current_account()
+				if not self.current_account:
+					print('Please, account number not registered. Please try again.')
+
+			# show account menu
+			self.show_account_menu()
+
 
 		elif choice == 3:
 			# Exit the program
