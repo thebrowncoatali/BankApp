@@ -236,6 +236,31 @@ class Program():
 			# Display Account Menu Again
 			self.show_account_menu()
 
+		elif choice == 4:
+			# Logic display transactions
+			transactions = self.current_account.get_transactions()
+			if not transactions:
+				print(
+					'',
+					'==================================',
+					'You dont have transactions for now',
+					'==================================',
+					sep='\n'
+				)
+			for transaction in transactions:
+				print(
+					'=========================================================',
+					'Transactions ======== type: {} ======== Amount: {} CAD'.format(
+						transaction.get_transaction_type(),
+						transaction.get_transaction_amount()
+					),
+					'=========================================================',
+					sep='\n'
+					)
+
+			# Display Account Menu Again
+			self.show_account_menu()
+
 		elif choice == 5:
 			# Go back to Banking Main Menu
 			self.show_main_menu()

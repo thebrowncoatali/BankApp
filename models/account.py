@@ -46,6 +46,12 @@ class Account():
 		"""
 		return self._current_balance
 
+	def get_transactions(self):
+		"""
+			return all historical transactions
+		"""
+		return self._transactions
+
 	def deposit(self, amount):
 		"""
 			this funtion take amount as
