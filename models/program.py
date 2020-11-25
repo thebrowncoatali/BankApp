@@ -174,7 +174,16 @@ class Program():
 				print('\nInvalid choice, please try again. choice a number between [1-5]')
 
 		if choice == 1:
-			pass
+			# Logic to check balance
+			print(
+				'',
+				'==========================',
+				'Current Balance: {} CAD'.format(self.current_account.get_current_balance()),
+				'==========================',
+				sep='\n'
+			)
+			# Display Account Menu Again
+			self.show_account_menu()
 
 		elif choice == 5:
 			# Go back to Banking Main Menu
