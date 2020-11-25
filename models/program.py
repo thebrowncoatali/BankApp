@@ -1,9 +1,10 @@
+from models.bank import Bank
 
 
 class Program():
 
 	def __init__(self):
-		pass
+		self.bank = Bank('Bank of Canada')
 
 	def run(self):
 		"""
@@ -85,11 +86,24 @@ class Program():
 				if not choice:
 					print('\nInvalid choice, please try again. choice a number between [1-2]')
 
+			if choice == 1:
+				# set as saving account
+				new_account['account_type'] = 'saving_account'
+			else:
+				# set as checquing account
+				new_account['account_type'] = 'checquing_account'
+
+			# create a new account
+			self.bank.open_account(**new_account)
+			# successfully message
+			print("\nUser was created successfully")
+			# go to main menu
+			self.show_main_menu()
 
 
 		if choice == 2:
-			# show second menu by the momment
-			self.show_account_menu()
+			# seach by account number
+			pass
 
 		elif choice == 3:
 			# Exit the program

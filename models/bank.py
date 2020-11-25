@@ -19,10 +19,10 @@ class Bank():
 			account_type = account_data['account_type']
 			if account_type == 'saving_account':
 				# Create an instance of SavingsAccount class 
-				account = SavingsAccount(**account_info)
+				account = SavingsAccount(**account_data)
 			elif account_type == 'checquing_account':
 				# Create an instance of ChecquingAccount class
-				account = ChecquingAccount(**account_info)
+				account = ChecquingAccount(**account_data)
 
 			# add to list of accounts
 			self._accounts_list.append(account)
@@ -51,16 +51,22 @@ class Bank():
 		kwargs['current_balance'] = 0 # new account
 		kwargs['account_number'] =  '2142324234124' # must be a random number
 
+		overdraft_allowed = 5000 # set by bank
+		minimum_balance = 3000 # set by bank
+
 		account_type = kwargs['account_type']
 		if account_type == 'saving_account':
-			# Create an instance of SavingsAccount class 
-			account = SavingsAccount(**account_info)
+			# Create an instance of SavingsAccount class
+			kwargs['minimum_balance'] = minimum_balance
+			account = SavingsAccount(**kwargs)
 		elif account_type == 'checquing_account':
 			# Create an instance of ChecquingAccount class
-			account = ChecquingAccount(**account_info)
+			kwargs['overdraft_allowed'] = overdraft_allowed
+			account = ChecquingAccount(**kwargs)
 		
 		# add new account to list of accounts
 		self._accounts_list.append(account)
+
 
 	def search_account(self, account_number):
 		"""
