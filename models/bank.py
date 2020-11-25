@@ -17,11 +17,14 @@ class Bank():
 			# choice a class depend of account type
 			account_type = account_data['account_type']
 			if account_type == 'saving_account':
-				# Create a instance of SavingsAccount class 
-				pass
+				# Create an instance of SavingsAccount class 
+				account = SavingsAccount(**account_info)
 			elif account_type == 'checquing_account':
-				# Create a instance of ChecquingAccount class
-				pass
+				# Create an instance of ChecquingAccount class
+				account = ChecquingAccount(**account_info)
+
+			# add to list of accounts
+			self._accounts_list.append(account)
 
 	def get_bank_name(self):
 		"""
@@ -41,7 +44,22 @@ class Bank():
 			I think that another parameters must be set by 
 			bank as: account number, rate of interest...
 		"""
-		pass
+
+		# set by bank
+		kwargs['rate_of_interest'] = 0.10 # set by bank
+		kwargs['current_balance'] = 0 # new account
+		kwargs['account_number'] =  '2142324234124' # must be a random number
+
+		account_type = kwargs['account_type']
+		if account_type == 'saving_account':
+			# Create an instance of SavingsAccount class 
+			account = SavingsAccount(**account_info)
+		elif account_type == 'checquing_account':
+			# Create an instance of ChecquingAccount class
+			account = ChecquingAccount(**account_info)
+		
+		# add new account to list of accounts
+		self._accounts_list.append(account)
 
 	def search_account(self, account_number):
 		"""
