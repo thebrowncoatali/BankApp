@@ -203,6 +203,39 @@ class Program():
 			# Display Account Menu Again
 			self.show_account_menu()
 
+		elif choice == 3:
+			# Logic to withdraw
+			amount = None
+			while not amount:
+				try:
+					amount = float(input('Amount to withdraw: '))
+					is_done = self.current_account.withdraw(amount)
+					if not amount >=0:
+						print('Enter value greater than 0')
+						amount = None
+				except:
+					print('Invalid value, try again')
+			
+			#Check if was made sussccefully
+			if not is_done:
+				if self.current_account.get_account_type() == 'saving_account':
+					print(
+						'\nError Message: This accounts require account holders to maintain',
+						'a minimum balance of {} CAD'.format(self.current_account.get_minimum_balance()),
+						'you do not have sufficient funds to do this operation.',
+						sep='\n'
+					)
+				elif self.current_account.get_account_type() == 'checquing_account':
+					print(
+						'\nError Message: Account has an overdraft',
+						'limit of {} CAD'.format(self.current_account.get_overdraft_allowed()),
+						'You are getting over the overdraft.',
+						sep='\n'
+					)
+
+			# Display Account Menu Again
+			self.show_account_menu()
+
 		elif choice == 5:
 			# Go back to Banking Main Menu
 			self.show_main_menu()
