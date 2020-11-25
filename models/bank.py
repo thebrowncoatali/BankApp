@@ -12,6 +12,17 @@ class Bank():
 		# set bank name
 		self._name = name
 
+		# list that holds the accounts objects
+		for account_data in ACCOUNTS:
+			# choice a class depend of account type
+			account_type = account_data['account_type']
+			if account_type == 'saving_account':
+				# Create a instance of SavingsAccount class 
+				pass
+			elif account_type == 'checquing_account':
+				# Create a instance of ChecquingAccount class
+				pass
+
 	def get_bank_name(self):
 		"""
 			return bank name
