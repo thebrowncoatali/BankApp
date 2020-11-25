@@ -1,3 +1,4 @@
+from .account import SavingsAccount, ChecquingAccount
 from data import ACCOUNTS
 
 class Bank():
