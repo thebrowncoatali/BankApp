@@ -87,7 +87,16 @@ class SavingsAccount(Account):
 			the current balance in the account is 7000 CAD, 
 			the maximum withdrawal that can be allowed is 2000 CAD
 		"""
-		pass
+		max_withdraw_allowed = self._current_balance - self._minimum_balance
+		if amount > max_withdraw_allowed:
+			# this transaction can not be executed
+			return None
+		else:
+			transaction = Transaction(type_transaction='withdraw', amount=amount)
+			self._transactions.append(transaction)
+			self._current_balance-=amount
+		
+		return True
 
 
 class ChecquingAccount(Account):
@@ -117,5 +126,14 @@ class ChecquingAccount(Account):
 			the account holder is allowed to withdraw up to 5000 CAD 
 			more than the money they have in the account.
 		"""
-		pass
+		max_overdrafts_allowed = self._current_balance + self._overdraft_allowed
+		if amount > max_overdrafts_allowed:
+			# this transaction can not be executed
+			return None
+		else:
+			transaction = Transaction(type_transaction='withdraw', amount=amount)
+			self._transactions.append(transaction)
+			self._current_balance-=amount
+		
+		return True
 
