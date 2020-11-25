@@ -65,4 +65,8 @@ class Bank():
 		"""
 			return account match from list of accounts
 		"""
-		pass
+		for account in self._accounts_list:
+			if account_number == account.get_account_number():
+				return account
+
+		return []
