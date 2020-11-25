@@ -1,3 +1,4 @@
+from models.transaction import Transaction
 
 
 class Account():
@@ -44,6 +45,18 @@ class Account():
 			return current balance
 		"""
 		return self._current_balance
+
+	def deposit(self, amount):
+		"""
+			this funtion take amount as
+			parameter log the transaction and does a deposit
+		"""
+		# Create Transation
+		transaction = Transaction(type_transaction='deposit', amount=amount)
+		self._transactions.append(transaction)
+
+		#also we can apply bank interest
+		self._current_balance+=amount
 
 
 class SavingsAccount(Account):
