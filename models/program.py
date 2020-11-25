@@ -185,6 +185,24 @@ class Program():
 			# Display Account Menu Again
 			self.show_account_menu()
 
+		elif choice == 2:
+			# Logic to deposit
+			amount = None
+			while not amount:
+				try:
+					amount = float(input('Amount to deposit: '))
+					if not amount >=0:
+						print('Enter value greater than 0')
+						amount = None
+				except:
+					print('Invalid value, try again')
+
+			# Make deposit
+			self.current_account.deposit(amount)
+
+			# Display Account Menu Again
+			self.show_account_menu()
+
 		elif choice == 5:
 			# Go back to Banking Main Menu
 			self.show_main_menu()
