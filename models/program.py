@@ -21,6 +21,7 @@ class Program():
 		"""
 		print(
 			'',
+			'===================',
 			'Backing Main Menu:',
 			'===================',
 			' ** Open Account [1]',
@@ -49,7 +50,14 @@ class Program():
 			# Error message
 			if not choice:
 				print('\nInvalid choice, please try again. choice a number between [1-3]')
-		
+
+		if choice == 2:
+			# show second menu by the momment
+			self.show_account_menu()
+
+		elif choice == 3:
+			# Exit the program
+			exit()		
 
 
 
@@ -64,6 +72,7 @@ class Program():
 				** Exit Account: go back to Banking Main Menu
 		"""
 		print(
+			'\n=====================',
 			'Account Menu:',
 			'=====================',
 			' ** Check Balance [1]',
@@ -94,3 +103,10 @@ class Program():
 			# Error message
 			if not choice:
 				print('\nInvalid choice, please try again. choice a number between [1-5]')
+
+		if choice == 1:
+			pass
+
+		elif choice == 5:
+			# Go back to Banking Main Menu
+			self.show_main_menu()
