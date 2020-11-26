@@ -67,6 +67,9 @@ class Bank():
 		# add new account to list of accounts
 		self._accounts_list.append(account)
 
+		# return new account created:
+		return account
+
 
 	def search_account(self, account_number):
 		"""

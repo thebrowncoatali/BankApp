@@ -106,10 +106,17 @@ class Program():
 				new_account['account_type'] = 'checquing_account'
 
 			# create a new account
-			self.bank.open_account(**new_account)
+			account_created = self.bank.open_account(**new_account)
 			# successfully message
-			print("\nUser was created successfully")
-			# go to main menu
+			print('\nUser was created successfully')
+			print(
+				'================================',
+				'===== New Account Details ======',
+				'** Bank number: {}'.format(account_created.get_account_number()),
+				'** Holder Name: {}'.format(account_created.get_account_holder_name()),
+				'================================',
+				sep='\n'
+			)			# go to main menu
 			self.show_main_menu()
 
 
